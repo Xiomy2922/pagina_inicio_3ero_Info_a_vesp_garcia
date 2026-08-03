@@ -1,0 +1,656 @@
+/* ==========================================================================
+   1. RESETEO Y ESTILOS GENERALES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #111111;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. ENCABEZADO (MÁXIMA ELEGANCIA Y JUEGO DE AIRES)
+   ========================================================================== */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 80px; 
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent; 
+    z-index: 1000; 
+}
+
+/* Logo "FRAGRANCES" - Grueso y visible */
+.logo-text {
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 42px; 
+    font-weight: 700; 
+    letter-spacing: 12px; 
+    color: #111111; 
+    text-transform: uppercase;
+    
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+}
+
+.logo-text:hover {
+    opacity: 0.6; 
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 45px; 
+    align-items: center;
+}
+
+.nav-links a {
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    color: #111111; 
+    font-size: 14px; 
+    font-weight: 700; 
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+.nav-links a:hover {
+    color: #111111; 
+    transform: scale(1.1); 
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: -2px;
+    height: 2px; 
+    background-color: #111111; 
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: calc(100% - 20px); 
+}
+
+/* ==========================================================================
+   3. BANNER PRINCIPAL (CARRUSEL)
+   ========================================================================== */
+#banner-container {
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden;
+    position: relative;
+    background-color: #e5d4cd; 
+}
+
+#banner-images {
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out; 
+    display: flex;
+    align-items: center;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.slide-content {
+    padding: 0 8%;
+    color: #111111;
+    max-width: 650px;
+    z-index: 2;
+    margin-top: 80px; 
+}
+
+.slide-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; 
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    font-weight: 700; 
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.slide-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; 
+    font-weight: 600; 
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    color: #222222;
+    margin-bottom: 35px;
+}
+
+.btn-action {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: #1c1a1a; 
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; 
+    letter-spacing: 2px;
+    font-weight: 700; 
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-action:hover {
+    background-color: #444444; 
+}
+
+.btn-action:active {
+    background-color: #666666;
+    transform: scale(0.98);
+}
+
+#banner-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.control {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.control.active {
+    background-color: #ffffff; 
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   4. SECCIÓN DE PRODUCTOS (ARIANA GRANDE STYLES)
+   ========================================================================== */
+.seccion-productos {
+    padding: 90px 4% 110px 4%;
+    background-color: #ffffff;
+}
+
+.productos-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.productos-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; 
+    font-weight: 700; 
+    color: #111111;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+}
+
+.productos-header p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; 
+    font-weight: 400; 
+    color: #444444;
+    letter-spacing: 1px;
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.producto-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 45px 25px 35px 25px;
+    text-align: center;
+    min-height: 560px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+}
+
+.producto-img-wrapper {
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.producto-img-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.producto-card:hover .producto-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.producto-info h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px; 
+    font-weight: 700; 
+    color: #111111;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.producto-info .tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px; 
+    font-weight: 400; 
+    color: #222222;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.producto-info .notas {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; 
+    font-weight: 400; 
+    font-style: italic; 
+    color: #333333;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    min-height: 55px;
+}
+
+.btn-shop {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    background-color: #111111;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; 
+    font-weight: 700; 
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-shop:hover {
+    background-color: #ffffff;
+    color: #111111;
+    outline: 1px solid #111111;
+}
+
+/* Colores tarjetas originales (Imagen 1) */
+.card-lila { background-color: #e5dbf0; }
+.card-lila h3 { color: #23123a; }
+.card-lila .tagline, .card-lila .notas { color: #382452; } 
+
+.card-rosa-intenso { background-color: #bd6474; }
+.card-rosa-intenso h3, 
+.card-rosa-intenso .tagline, 
+.card-rosa-intenso .notas { color: #ffffff !important; } 
+
+.card-naranja { background-color: #f7cbaf; }
+.card-naranja h3 { color: #3d1f0b; }
+.card-naranja .tagline, .card-naranja .notas { color: #522f18; }
+
+.card-verde { background-color: #b2c4b2; }
+.card-verde h3 { color: #162416; }
+.card-verde .tagline, .card-verde .notas { color: #273b27; }
+
+/* Estilos adicionales para la sección de productos estilo Imagen 2 */
+.seccion-productos-imagen2 {
+    background-color: #ffffff;
+}
+.seccion-productos-imagen2 .productos-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+}
+.shop-by-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    font-size: 14px;
+}
+.shop-by-container span {
+    color: #555;
+}
+.btn-filter {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.btn-filter.active {
+    background-color: #111111;
+    color: #ffffff;
+    border-color: #111111;
+}
+.seccion-productos-imagen2 .producto-card {
+    background-color: #ffffff;
+    min-height: auto;
+    padding: 20px;
+}
+.seccion-productos-imagen2 .producto-img-wrapper {
+    height: 280px;
+}
+.seccion-productos-imagen2 .producto-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    text-transform: none;
+}
+.seccion-productos-imagen2 .btn-shop {
+    background-color: transparent;
+    color: #111111;
+    border: 1px solid #111111;
+}
+.seccion-productos-imagen2 .btn-shop:hover {
+    background-color: #111111;
+    color: #ffffff;
+}
+.shop-all-container {
+    margin-top: 40px;
+    text-align: center;
+}
+.btn-shop-all {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: #111111;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: opacity 0.3s ease;
+}
+.btn-shop-all:hover {
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   5. SECCIÓN: CON LA CABEZA EN LAS NUBES
+   ========================================================================== */
+.seccion-nubes {
+    width: 100%;
+    padding: 110px 6%;
+    background-color: #f6edf2; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nubes-content-wrapper {
+    max-width: 1400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr; 
+    gap: 60px;
+    align-items: center;
+}
+
+.nubes-info {
+    padding-right: 20px;
+}
+
+.nubes-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; 
+    font-weight: 700; 
+    line-height: 1.2;
+    color: #111111;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.nubes-info p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; 
+    font-weight: 400; 
+    line-height: 1.7;
+    color: #222222;
+    margin-bottom: 40px;
+    max-width: 420px;
+}
+
+.nubes-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 280px;
+}
+
+.btn-nube-negro {
+    display: block;
+    width: 100%;
+    padding: 18px 0;
+    background-color: #1c1a1a; 
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; 
+    font-weight: 700; 
+    letter-spacing: 2px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-nube-negro:hover {
+    background-color: #444444; 
+}
+
+.nubes-imagenes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 25px;
+}
+
+.nube-img-box {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    border-radius: 4px; 
+}
+
+.nube-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+}
+
+.nube-img-box:hover img {
+    transform: scale(1.04); 
+}
+
+/* ==========================================================================
+   6. SECCIÓN VIDEOS INTERACTIVA (Estilo Imagen 3)
+   ========================================================================== */
+.seccion-videos-interactiva {
+    padding: 80px 4%;
+    background-color: #faf6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-interactive-container {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    align-items: center;
+}
+
+.video-thumbs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.thumb-item {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    background: #000;
+}
+
+.thumb-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumb-item:hover {
+    opacity: 0.9;
+}
+
+.thumb-item.active {
+    opacity: 1;
+    border-color: #111111;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.video-main-display {
+    width: 100%;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    aspect-ratio: 16 / 9;
+}
+
+.video-main-display video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+    .nubes-content-wrapper {
+        grid-template-columns: 1fr; 
+        text-align: center;
+    }
+    .nubes-info p { margin: 0 auto 40px auto; }
+    .nubes-botones { margin: 0 auto; }
+    
+    .video-interactive-container {
+        grid-template-columns: 1fr;
+    }
+    .video-thumbs-list {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .thumb-item {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* =========================
+   EFECTO HOVER: SECCIÓN PRODUCTOS 1
+========================== */
+
+/* Contenedor general que detecta cuando el mouse está sobre él */
+.blur-container-1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Transición base para todas las tarjetas de esta sección */
+.blur-container-1 .producto-card {
+    transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+    cursor: pointer;
+}
+
+/* Cuando el mouse pasa sobre el contenedor, POR DEFECTO se desenfocan todas un poco */
+.blur-container-1:hover .producto-card {
+    filter: blur(5px);
+    opacity: 0.4;
+}
+
+/* EXCEPCIÓN: La tarjeta sobre la cual está el cursor se ve nítida, aumenta de tamaño y resalta */
+.blur-container-1 .producto-card:hover {
+    filter: blur(0) !important;
+    opacity: 1 !important;
+    transform: scale(1.05);
+    z-index: 10;
+}
